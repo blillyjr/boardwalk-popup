@@ -8,33 +8,19 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* Boardwalk brand — sampled from bwpipelines.com + Levelwear decoration sheet */
-    --ink:#2E2E2E;              /* site body ink */
-    --slate:#27455C;            /* dark slate-navy section color */
-    --slate-2:#1C3247;
-    --green:#20EF87;            /* site accent green */
-    --green-dark:#149C5C;
-    --blue:#3378C6;             /* site link blue */
-    --bw-blue-1:#C3D7EE;        /* PMS 2707 (logo) */
-    --bw-blue-2:#8BB8E8;        /* PMS 278  (logo) */
-    --bw-blue-3:#5F8DDA;        /* PMS 2129 (logo) */
-    --muted:#696969;
-    --line:#EEEEEE;
-    --bg:#FAFBFC;
-    --radius:14px;
-    --shadow:0 10px 30px rgba(39,69,92,.10);
-    /* garment colors */
-    --g-black:#2B2B30; --g-ice:#7FB2E5; --g-navy:#1F2A4D; --g-white:#F5F6F8;
+    --ink:#2E2E2E; --slate:#27455C; --slate-2:#1C3247;
+    --green:#20EF87; --green-dark:#149C5C; --blue:#3378C6;
+    --bw-blue-1:#C3D7EE; --bw-blue-2:#8BB8E8; --bw-blue-3:#5F8DDA;
+    --muted:#696969; --line:#EEEEEE; --bg:#FAFBFC;
+    --radius:14px; --shadow:0 10px 30px rgba(39,69,92,.10);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;letter-spacing:-.01em}
   h1,h2,h3{letter-spacing:-.02em}
 
-  /* ---------- Header ---------- */
   header{background:var(--slate);color:#fff;position:sticky;top:0;z-index:50}
   .header-inner{max-width:1240px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px}
-  .brand{display:flex;align-items:center;gap:12px}
   .brand img{height:30px;display:block}
   .brand .fallback{font-weight:800;font-size:20px;letter-spacing:.24em;display:none}
   .divider{width:1px;height:26px;background:rgba(255,255,255,.25)}
@@ -43,7 +29,6 @@
     font-size:12.5px;font-weight:700;padding:7px 14px;border-radius:999px;white-space:nowrap}
   .close-pill.closed{background:rgba(255,120,120,.12);border-color:rgba(255,120,120,.4);color:#FF9B9B}
 
-  /* ---------- Hero ---------- */
   .hero{background:linear-gradient(120deg,var(--slate-2) 0%,var(--slate) 55%,#31576F 100%);color:#fff;overflow:hidden;position:relative}
   .hero::after{content:"";position:absolute;right:-130px;top:-150px;width:540px;height:540px;border-radius:50%;
     border:90px solid rgba(95,141,218,.13)}
@@ -53,12 +38,11 @@
   .eyebrow{font-size:12.5px;letter-spacing:.26em;font-weight:700;color:var(--bw-blue-2);margin-bottom:14px;text-transform:uppercase}
   .hero h1{font-size:clamp(36px,5.2vw,64px);font-weight:800;line-height:1.02;text-transform:uppercase;letter-spacing:-.025em}
   .hero h1 span{color:var(--green)}
-  .hero p{max-width:580px;margin-top:18px;color:#C6D3DE;font-size:16.5px}
+  .hero p{max-width:620px;margin-top:18px;color:#C6D3DE;font-size:16.5px}
   .hero-cta{display:inline-flex;align-items:center;gap:10px;margin-top:28px;background:var(--green);color:var(--slate-2);
     font-weight:800;font-size:14.5px;padding:14px 28px;border-radius:999px;text-decoration:none;transition:.2s}
   .hero-cta:hover{background:#fff}
 
-  /* ---------- Steps ---------- */
   .steps{max-width:1240px;margin:-26px auto 0;padding:0 24px;position:relative;z-index:2}
   .steps-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);display:grid;
     grid-template-columns:repeat(3,1fr);overflow:hidden}
@@ -68,25 +52,26 @@
     font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
   .step h3{font-size:14.5px;font-weight:700}
   .step p{font-size:13px;color:var(--muted);margin-top:2px}
+  .step p b{color:var(--slate)}
 
-  /* ---------- Layout ---------- */
   .layout{max-width:1240px;margin:44px auto 80px;padding:0 24px;display:grid;grid-template-columns:1fr 350px;gap:32px;align-items:start}
   .section-label{font-size:12px;letter-spacing:.24em;font-weight:800;color:var(--blue);text-transform:uppercase;margin-bottom:8px}
-  .products h2{font-size:28px;font-weight:800;margin-bottom:22px;text-transform:uppercase}
+  .products h2{font-size:28px;font-weight:800;margin-bottom:8px;text-transform:uppercase}
+  .one-note{display:inline-flex;align-items:center;gap:8px;background:#FFF6E3;border:1px solid #F1DEAE;color:#7A6220;
+    font-size:13px;font-weight:700;border-radius:999px;padding:7px 16px;margin-bottom:20px}
 
-  /* ---------- Product card ---------- */
   .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
     margin-bottom:28px;overflow:hidden}
   .card-body{display:grid;grid-template-columns:330px 1fr}
-  .preview{background:linear-gradient(180deg,#F4F7FA 0%,#EBF0F5 100%);padding:20px 20px 16px;display:flex;flex-direction:column;gap:12px}
-  .main-img{position:relative;border-radius:10px;overflow:hidden;background:#fff;cursor:zoom-in;aspect-ratio:1}
-  .main-img img{width:100%;height:100%;object-fit:contain;display:block;transition:opacity .15s}
+  .preview{background:linear-gradient(180deg,#EFF3F8 0%,#E4EAF1 100%);padding:20px 20px 16px;display:flex;flex-direction:column;gap:12px}
+  .main-img{position:relative;border-radius:10px;overflow:hidden;background:#E9EEF4;cursor:zoom-in;aspect-ratio:1}
+  .main-img img{width:100%;height:100%;object-fit:contain;display:block;mix-blend-mode:multiply}
   .zoom-hint{position:absolute;bottom:8px;right:10px;background:rgba(39,69,92,.75);color:#fff;font-size:10.5px;
     padding:4px 9px;border-radius:999px;letter-spacing:.06em}
   .thumbs{display:flex;gap:8px}
-  .thumb{width:56px;height:56px;border-radius:8px;overflow:hidden;background:#fff;border:2px solid transparent;
+  .thumb{width:56px;height:56px;border-radius:8px;overflow:hidden;background:#E9EEF4;border:2px solid transparent;
     cursor:pointer;flex:none;transition:.15s}
-  .thumb img{width:100%;height:100%;object-fit:contain;display:block}
+  .thumb img{width:100%;height:100%;object-fit:contain;display:block;mix-blend-mode:multiply}
   .thumb.active{border-color:var(--blue)}
   .img-fallback{display:flex;align-items:center;justify-content:center;height:100%;color:#9AA7B2;font-size:12px}
 
@@ -95,8 +80,8 @@
   .style-no{font-size:13px;color:var(--muted);margin-top:2px;margin-bottom:14px}
   .field-label{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px}
   .swatches{display:flex;gap:10px}
-  .swatch{width:34px;height:34px;border-radius:50%;cursor:pointer;outline:2px solid var(--line);
-    outline-offset:2px;transition:.15s;border:none}
+  .swatch{width:34px;height:34px;border-radius:50%;cursor:pointer;outline:2px solid #B9C4CF;
+    outline-offset:2px;transition:.15s;border:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
   .swatch.active{outline:3px solid var(--blue)}
   .swatch-name{font-size:12.5px;font-weight:700;margin-top:8px;display:block}
   .sizes{display:flex;gap:8px;flex-wrap:wrap}
@@ -104,16 +89,11 @@
     font-weight:700;cursor:pointer;background:#fff;transition:.15s}
   .size.active{border-color:var(--slate);background:var(--slate);color:#fff}
   .row{display:flex;align-items:center;gap:14px;margin-top:18px;flex-wrap:wrap}
-  .qty{display:flex;align-items:center;border:1.5px solid #DDD;border-radius:999px;overflow:hidden}
-  .qty button{width:38px;height:40px;border:none;background:#fff;font-size:18px;cursor:pointer;color:var(--slate);font-weight:700}
-  .qty button:hover{background:var(--bg)}
-  .qty input{width:42px;height:40px;border:none;text-align:center;font-size:14px;font-weight:800;font-family:'DM Sans'}
-  .add-btn{flex:1;min-width:150px;height:44px;background:var(--slate);color:#fff;border:none;border-radius:999px;
+  .add-btn{flex:1;min-width:170px;height:44px;background:var(--slate);color:#fff;border:none;border-radius:999px;
     font-family:'DM Sans';font-weight:800;font-size:14px;cursor:pointer;transition:.2s}
   .add-btn:hover{background:var(--blue)}
-  .added-flash{font-size:12.5px;font-weight:700;margin-top:9px;height:16px}
+  .added-flash{font-size:12.5px;font-weight:700;margin-top:9px;min-height:16px}
 
-  /* ---------- Decoration details ---------- */
   details.deco{border-top:1px solid var(--line)}
   details.deco summary{list-style:none;cursor:pointer;padding:13px 28px;font-size:12px;font-weight:800;
     letter-spacing:.16em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:8px}
@@ -122,16 +102,15 @@
   details.deco[open] summary .chev{transform:rotate(90deg)}
   .deco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:4px 28px 22px}
   .deco-tile{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
-  .deco-art{height:96px;display:flex;align-items:center;justify-content:center;position:relative}
-  .deco-art svg{display:block}
+  .deco-art{height:104px;display:flex;align-items:center;justify-content:center;gap:9px}
+  .deco-art svg{display:block;flex:none}
   .deco-meta{padding:10px 12px}
   .deco-meta b{display:block;font-size:12px;font-weight:700}
-  .deco-meta span{font-size:11px;color:var(--muted)}
+  .deco-meta span{font-size:11px;color:var(--muted);display:block}
   .pms{display:flex;gap:5px;margin-top:6px;align-items:center;flex-wrap:wrap}
-  .chip{width:11px;height:11px;border-radius:3px;border:1px solid rgba(0,0,0,.12)}
+  .chip{width:11px;height:11px;border-radius:3px;border:1px solid rgba(0,0,0,.14)}
   .pms small{font-size:9.5px;color:var(--muted);margin-right:4px}
 
-  /* ---------- Summary ---------- */
   .summary{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
     position:sticky;top:84px;overflow:hidden}
   .summary-head{background:var(--slate);color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center}
@@ -145,7 +124,6 @@
   .li-main{flex:1}
   .li-main b{display:block;font-size:13px}
   .li-main span{color:var(--muted);font-size:12px}
-  .li-qty{font-weight:800}
   .li-remove{border:none;background:none;color:#C05252;cursor:pointer;font-size:15px;padding:4px}
   .form label{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:12px 0 6px}
   .form input,.form select{width:100%;height:42px;border:1.5px solid #DDD;border-radius:8px;padding:0 12px;
@@ -155,25 +133,32 @@
     font-family:'DM Sans';font-weight:800;font-size:14.5px;cursor:pointer;transition:.2s}
   .submit-btn:hover{background:var(--slate);color:#fff}
   .submit-btn:disabled{background:#D5DBE0;color:#8A959E;cursor:not-allowed}
-  .fine{font-size:11.5px;color:var(--muted);margin-top:12px;text-align:center}
+  .fine{font-size:11.5px;color:var(--muted);margin-top:12px;text-align:center;line-height:1.6}
   .err{color:#C05252;font-size:12.5px;font-weight:700;margin-top:10px;display:none}
 
-  /* ---------- Footer ---------- */
   footer{background:var(--slate-2);color:#93A6B5;padding:34px 24px;font-size:12.5px}
   .footer-inner{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
   footer img{height:22px;opacity:.9;vertical-align:middle}
 
-  /* ---------- Modal + Lightbox ---------- */
   .overlay{position:fixed;inset:0;background:rgba(28,50,71,.6);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
   .overlay.open{display:flex}
-  .modal{background:#fff;border-radius:16px;max-width:480px;width:100%;padding:34px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+  .modal{background:#fff;border-radius:16px;max-width:500px;width:100%;padding:32px;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+  .modal.center{text-align:center}
   .modal .check{width:58px;height:58px;border-radius:50%;background:var(--green);color:var(--slate-2);font-size:26px;
     display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-weight:800}
   .modal h3{font-size:22px;font-weight:800;margin-bottom:10px}
   .modal p{font-size:14px;color:var(--muted)}
-  .modal .recap{background:var(--bg);border-radius:10px;padding:14px 18px;margin:18px 0;text-align:left;font-size:13px;max-height:180px;overflow:auto}
-  .modal button{margin-top:6px;background:var(--slate);color:#fff;border:none;border-radius:999px;padding:12px 30px;
-    font-family:'DM Sans';font-weight:800;cursor:pointer}
+  .modal .recap{background:var(--bg);border-radius:10px;padding:14px 18px;margin:18px 0;text-align:left;font-size:13.5px;max-height:230px;overflow:auto}
+  .recap .r-row{display:flex;justify-content:space-between;gap:10px;padding:5px 0}
+  .recap .r-row span:first-child{color:var(--muted)}
+  .recap hr{border:none;border-top:1px dashed #DDD;margin:8px 0}
+  .modal-actions{display:flex;gap:12px;justify-content:center;margin-top:8px;flex-wrap:wrap}
+  .btn-primary{background:var(--green);color:var(--slate-2);border:none;border-radius:999px;padding:13px 28px;
+    font-family:'DM Sans';font-weight:800;font-size:14px;cursor:pointer}
+  .btn-primary:hover{background:var(--slate);color:#fff}
+  .btn-ghost{background:none;color:var(--slate);border:1.5px solid #CBD5DE;border-radius:999px;padding:13px 24px;
+    font-family:'DM Sans';font-weight:800;font-size:14px;cursor:pointer}
+  .btn-ghost:hover{border-color:var(--slate)}
   .demo-tag{display:inline-block;margin-top:14px;font-size:10.5px;letter-spacing:.14em;font-weight:800;color:var(--blue);
     border:1px solid var(--bw-blue-2);border-radius:999px;padding:5px 12px}
   .lightbox{position:fixed;inset:0;background:rgba(28,50,71,.85);display:none;align-items:center;justify-content:center;z-index:110;cursor:zoom-out;padding:30px}
@@ -209,16 +194,16 @@
   <div class="hero-inner">
     <div class="eyebrow">Employee Apparel Program</div>
     <h1>Powering<br>Possibility, <span>in style.</span></h1>
-    <p>Premium Levelwear golf apparel, custom-decorated with the Boardwalk mark. Pick your styles, colors and sizes below — corporate covers the cost, and orders are delivered to your office location.</p>
+    <p>Premium Levelwear golf apparel custom decorated with the Boardwalk logos. Select one style, one color, and your size below. The Supply Chain Group covers the cost, and your order will be delivered to your office location.</p>
     <a href="#shop" class="hero-cta">Start your order →</a>
   </div>
 </section>
 
 <section class="steps">
   <div class="steps-card">
-    <div class="step"><div class="step-num">1</div><div><h3>Pick your apparel</h3><p>Choose color, size and quantity for each style.</p></div></div>
+    <div class="step"><div class="step-num">1</div><div><h3>Pick your apparel</h3><p>Choose your style, color and size. <b>Please select one item only.</b></p></div></div>
     <div class="step"><div class="step-num">2</div><div><h3>Enter your info</h3><p>Name, email and your office location.</p></div></div>
-    <div class="step"><div class="step-num">3</div><div><h3>Submit — that's it</h3><p>No payment needed. Delivered to your office.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div><h3>Review &amp; submit</h3><p>Confirm your order — no payment needed.</p></div></div>
   </div>
 </section>
 
@@ -226,6 +211,7 @@
   <div class="products">
     <div class="section-label">Levelwear · Versa Collection</div>
     <h2>Select your apparel</h2>
+    <div class="one-note">☝ One item per person — one style, one color, your size.</div>
     <div id="productList"></div>
   </div>
 
@@ -235,7 +221,7 @@
       <span class="count-badge" id="countBadge">0</span>
     </div>
     <div class="summary-body">
-      <div id="lineItems"><div class="empty">No items yet — add apparel from the left.</div></div>
+      <div id="lineItems"><div class="empty">No item yet — pick your apparel on the left.</div></div>
       <form class="form" id="orderForm" onsubmit="return false;">
         <label>Full name</label>
         <input type="text" id="fName" placeholder="Jane Smith" autocomplete="name">
@@ -244,8 +230,10 @@
         <label>Office location</label>
         <select id="fLocation"><option value="">Select your office…</option></select>
         <div class="err" id="formErr"></div>
-        <button class="submit-btn" id="submitBtn">Submit order</button>
-        <div class="fine">Single corporate PO — no payment required.<br>Questions? apparel@boblillypromotions.com</div>
+        <button class="submit-btn" id="submitBtn">Review &amp; submit order</button>
+        <div class="fine">Covered by the Supply Chain Group — no payment required.<br>
+        Delivery to your office may take up to 3 weeks after ordering closes.<br>
+        Questions? apparel@boblillypromotions.com</div>
       </form>
     </div>
   </aside>
@@ -258,14 +246,28 @@
   </div>
 </footer>
 
-<div class="overlay" id="overlay">
+<!-- Review-before-submit -->
+<div class="overlay" id="reviewOverlay">
   <div class="modal">
+    <h3>Review your order</h3>
+    <p>Please confirm everything looks right before submitting.</p>
+    <div class="recap" id="reviewRecap"></div>
+    <div class="modal-actions">
+      <button class="btn-ghost" onclick="closeReview()">← Go back &amp; edit</button>
+      <button class="btn-primary" onclick="confirmSubmit()">Confirm &amp; submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Success -->
+<div class="overlay" id="overlay">
+  <div class="modal center">
     <div class="check">✓</div>
     <h3>Order Received</h3>
     <p id="modalSub">Thanks! Your order has been recorded.</p>
     <div class="recap" id="recap"></div>
     <span class="demo-tag">DEMO MODE — NOT YET CONNECTED TO SHAREPOINT</span><br>
-    <button onclick="closeModal()">Done</button>
+    <button class="btn-primary" style="margin-top:14px" onclick="closeModal()">Done</button>
   </div>
 </div>
 
@@ -274,30 +276,33 @@
 </div>
 
 <script>
-/* ============ CONFIG — everything you'd tweak lives here ============ */
+/* ============ CONFIG ============ */
 const CONFIG = {
   closeDate: "2026-08-14T23:59:00-05:00",
-  locations: ["Houston, TX (HQ)", "Owensboro, KY", "Field Office — Other"],
-  maxItemsPerPerson: 4,          // null = no limit
+  locations: ["Houston, TX (HQ)", "Owensboro, KY", "Baton Rouge Office", "Port Allen Warehouse"],
   endpointUrl: null              // Power Automate URL goes here later
 };
 
-/* ============ Real product photography (Levelwear order #158967) ============ */
+/* ============ Product photography (Levelwear order #158967, updated sheet) ============ */
 const CDN = "https://sellsheet.order.levelwear.com/Images/CDN/";
 const IMAGES = {
   JI50L: {
-    black: ["4d/78/74/0b/1340376b43be0d6dfefde4dcd6467d52ac606c68b8239e8c2fd41436.jpg",
+    black: ["22/ab/a8/98/261ca4594be2d8ab064ea394a4a1f8133802242afa0a5b592e2ed947.jpg",
+            "4d/78/74/0b/1340376b43be0d6dfefde4dcd6467d52ac606c68b8239e8c2fd41436.jpg",
             "e3/27/c3/cc/b7d84316804b4f5b5c10984408b5f906169ab8022aba60efe9be74ed.jpg",
             "7a/5f/ca/ec/c9c4021514866a6f51103e2fdfecf1defd99050cc19cb42cff3dc7a2.jpg",
             "de/d4/c4/03/5b082f4c129cbbc5ad1b401af8ba5da051b14821fa2a115fb2d42e96.jpg"],
-    ice:   ["a9/b6/c6/2c/ef17eba03b5ebfd6fe9064d12d2da3ce303b631e59035d06fe530a92.jpg",
+    ice:   ["be/8f/e4/50/afdeebdd57150f10f6466dc8441e70d2be37798079ed6ed8ae82d79e.jpg",
+            "a9/b6/c6/2c/ef17eba03b5ebfd6fe9064d12d2da3ce303b631e59035d06fe530a92.jpg",
             "db/7d/54/4e/09c7e3a7a2b6cea48b66a85d03219d23e73f9172966c570d3fed221a.jpg",
             "ca/78/d3/27/df71a188f9ed411dce300ac757c67677c54ebd1aacc9ab81bddc2d1e.jpg"],
-    navy:  ["9a/91/4c/57/3e8414a4bb1c6e064064024b6df69b49db30bdf368f3bf9ee6a81416.jpg",
+    navy:  ["2c/ec/2f/fb/dfab10363480beecafa38c94633ad97c6336a3b5ffa82c50e0cfabeb.jpg",
+            "9a/91/4c/57/3e8414a4bb1c6e064064024b6df69b49db30bdf368f3bf9ee6a81416.jpg",
             "b5/31/6e/43/78dcbfb6b3eb63697ed16e9ed37c8ac1a7395ad1bd794c6b187ca84a.jpg",
             "68/b3/97/b9/5bba7a507064c1f1a68075e6eb5c9e4d448dfb15861cf96fdf5d7e1b.jpg",
             "6b/21/30/d3/c784cba0308f3a6c85b61ef42ecbc8262535555989a64b7f583a5a37.jpg"],
-    white: ["4f/ec/42/54/24956661c6811dfa33b34ddfa2c226d76d7e38110c0f574d9cce58fe.jpg",
+    white: ["a0/d4/80/fd/b105729f77ee6b4882dfe1ca5b9b87100c7d4a6dd50c6bc3dd03e4e6.jpg",
+            "4f/ec/42/54/24956661c6811dfa33b34ddfa2c226d76d7e38110c0f574d9cce58fe.jpg",
             "85/aa/f8/69/af57d15538442c1eeb938314f03092ded9a78bb075f39f9c6abd9bd4.jpg",
             "a9/1f/dc/f7/a66c2d5849b850d4339a8286c052273cf7f0922ab00aa88e001eb4b9.jpg",
             "4d/33/d1/88/a15439b6208644a271707e73eba0e2d311db2eaffe4a9de7013e74f1.jpg"]
@@ -332,57 +337,91 @@ const PRODUCTS = [
   { id:"JI02L", name:"Versa Women's Polo", style:"Levelwear JI02L", sizes:["XS","S","M","L","XL","2XL"] }
 ];
 
-/* ============ State ============ */
-const sel = {};   // productId -> {color, size, qty, imgIdx}
-let cart = [];
+/* ============ Decoration specs — transcribed from the updated Levelwear sheet ============ */
+const PMS = { white:"#FFFFFF", black:"#111111", p2707:"#C3D7EE", p278:"#8BB8E8", p2129:"#5F8DDA", p7451:"#89ABE3", p660:"#407EC9" };
+const CHIPS_STD   = [["WHITE",PMS.white],["2707",PMS.p2707],["278",PMS.p278],["2129",PMS.p2129]];
+const CHIPS_BLACKTXT = [["BLACK",PMS.black],["2707",PMS.p2707],["278",PMS.p278],["2129",PMS.p2129]];
+const CHIPS_BLK_PLACKET = [["2707",PMS.p2707],["7451",PMS.p7451],["660",PMS.p660]];
+const DECO = {
+  JI50L: {
+    black: { yoke:{kind:"wordmark",code:"PWTS17246009-02",size:'2.50"w × 0.43"h',chips:CHIPS_STD},
+             sleeve:{kind:"wordmark",code:"PWTS17246009-02",size:'2.50"w × 0.43"h',chips:CHIPS_STD},
+             placket:{code:"HDLP17246008-03",size:'1.00"w × 7.00"h',chips:CHIPS_BLK_PLACKET} },
+    ice:   { yoke:{kind:"emblem",code:"PWTS17246012-01",size:'1.25"w × 0.83"h',chips:CHIPS_STD},
+             sleeve:{kind:"wordmark",code:"PWTS17246009-02",size:'2.50"w × 0.43"h',chips:CHIPS_STD},
+             placket:{code:"HDLP17246008-02",size:'1.00"w × 7.00"h',chips:CHIPS_STD} },
+    navy:  { yoke:{kind:"emblem",code:"PWTS17246012-01",size:'1.25"w × 0.83"h',chips:CHIPS_STD},
+             sleeve:{kind:"wordmark",code:"PWTS17246009-02",size:'2.50"w × 0.43"h',chips:CHIPS_STD},
+             placket:{code:"HDLP17246008-02",size:'1.00"w × 7.00"h',chips:CHIPS_STD} },
+    white: { yoke:{kind:"emblem",code:"PWTS17246012-01",size:'1.25"w × 0.83"h',chips:CHIPS_STD},
+             sleeve:{kind:"wordmark",dark:true,code:"PWTS17246009-03",size:'2.50"w × 0.43"h',chips:CHIPS_BLACKTXT},
+             placket:{code:"HDLP17246008-02",size:'1.00"w × 7.00"h',chips:CHIPS_STD} }
+  },
+  JI02L: {
+    black: { yoke:{kind:"emblem",code:"PWTS17246012-01",size:'1.25"w × 0.83"h',chips:CHIPS_STD},
+             sleeve:{kind:"wordmark",code:"PWTS17246009-02",size:'2.50"w × 0.43"h',chips:CHIPS_STD},
+             placket:{code:"HDLP17246008-02",size:'1.00"w × 7.00"h',chips:CHIPS_STD} },
+    ice:   { yoke:{kind:"emblem",code:"PWTS17246012-01",size:'1.25"w × 0.83"h',chips:CHIPS_STD},
+             sleeve:{kind:"wordmark",code:"PWTS17246009-02",size:'2.50"w × 0.43"h',chips:CHIPS_STD},
+             placket:{code:"HDLP17246008-02",size:'1.00"w × 7.00"h',chips:CHIPS_STD} },
+    navy:  { yoke:{kind:"emblem",code:"PWTS17246012-01",size:'1.25"w × 0.83"h',chips:CHIPS_STD},
+             sleeve:{kind:"wordmark",code:"PWTS17246009-02",size:'2.50"w × 0.43"h',chips:CHIPS_STD},
+             placket:{code:"HDLP17246008-02",size:'1.00"w × 7.00"h',chips:CHIPS_STD} },
+    white: { yoke:{kind:"emblem",code:"PWTS17246012-01",size:'1.25"w × 0.83"h',chips:CHIPS_STD},
+             sleeve:{kind:"wordmark",dark:true,code:"PWTS17246009-03",size:'2.50"w × 0.43"h',chips:CHIPS_BLACKTXT},
+             placket:{code:"HDLP17246008-02",size:'1.00"w × 7.00"h',chips:CHIPS_STD} }
+  }
+};
 
-/* ============ Decoration art (recreates the Levelwear decoration mockups) ============ */
-function markSVG(fg1, fg2, fg3, scale){
-  const s = scale || 1;
-  return `<svg width="${44*s}" height="${44*s}" viewBox="0 0 48 48" fill="none">
-    <circle cx="24" cy="24" r="19" stroke="${fg3}" stroke-width="5"/>
-    <circle cx="28" cy="24" r="12" stroke="${fg2}" stroke-width="4.5"/>
-    <circle cx="32" cy="24" r="5.5" stroke="${fg1}" stroke-width="4"/>
+/* Boardwalk emblem — overlapping rings, right-aligned (matches the official mark) */
+function emblemSVG(px){
+  return `<svg width="${px}" height="${px}" viewBox="0 0 100 100" fill="none">
+    <circle cx="46" cy="50" r="40" stroke="${PMS.p2129}" stroke-width="10"/>
+    <circle cx="57" cy="50" r="30" stroke="${PMS.p278}" stroke-width="9"/>
+    <circle cx="67" cy="50" r="21" stroke="${PMS.p2707}" stroke-width="8"/>
+    <circle cx="76" cy="50" r="13" stroke="${PMS.white}" stroke-width="7"/>
   </svg>`;
 }
-function decoTiles(color){
-  const onWhite = color.id === "white";
-  const text = onWhite ? "#2E2E2E" : "#FFFFFF";
+function artHTML(spec, bg){
+  if(spec.kind === "emblem") return emblemSVG(58);
+  const txt = spec.dark ? "#111" : "#fff";
+  return emblemSVG(30) + `<span style="color:${txt};font-weight:800;letter-spacing:.2em;font-size:14px">BOARDWALK</span>`;
+}
+function placketHTML(){
+  return `<div style="display:flex;flex-direction:column;gap:3px;align-items:center">${Array(6).fill(emblemSVG(13)).join("")}</div>`;
+}
+function chipsHTML(chips){
+  return `<div class="pms">${chips.map(([n,c])=>`<span class="chip" style="background:${c}"></span><small>${n}</small>`).join("")}</div>`;
+}
+function decoTiles(pid, color){
+  const d = DECO[pid][color.id];
   const bg = color.base;
-  const chips = (first) => `
-    <div class="pms">
-      <span class="chip" style="background:${first==='BLACK'?'#111':'#fff'}"></span><small>${first}</small>
-      <span class="chip" style="background:#C3D7EE"></span><small>2707</small>
-      <span class="chip" style="background:#8BB8E8"></span><small>278</small>
-      <span class="chip" style="background:#5F8DDA"></span><small>2129</small>
-    </div>`;
   return `
   <div class="deco-grid">
     <div class="deco-tile">
-      <div class="deco-art" style="background:${bg}">${markSVG("#C3D7EE","#8BB8E8","#5F8DDA",1)}</div>
-      <div class="deco-meta"><b>Back Yoke — Boardwalk Mark</b><span>Pur-weld transfer · 1.25"w × 0.83"h</span>${chips("WHITE")}</div>
+      <div class="deco-art" style="background:${bg}">${artHTML(d.yoke)}</div>
+      <div class="deco-meta"><b>Back Yoke</b><span>Pur-weld transfer · ${d.yoke.code}</span><span>${d.yoke.size}</span>${chipsHTML(d.yoke.chips)}</div>
     </div>
     <div class="deco-tile">
-      <div class="deco-art" style="background:${bg};gap:8px">
-        ${markSVG("#C3D7EE","#8BB8E8","#5F8DDA",.55)}
-        <span style="color:${text};font-weight:800;letter-spacing:.22em;font-size:13px">BOARDWALK</span>
-      </div>
-      <div class="deco-meta"><b>Left Sleeve — Wordmark</b><span>Pur-weld transfer · 2.50"w × 0.43"h</span>${chips(onWhite ? "BLACK" : "WHITE")}</div>
+      <div class="deco-art" style="background:${bg}">${artHTML(d.sleeve)}</div>
+      <div class="deco-meta"><b>Left Sleeve</b><span>Pur-weld transfer · ${d.sleeve.code}</span><span>${d.sleeve.size}</span>${chipsHTML(d.sleeve.chips)}</div>
     </div>
     <div class="deco-tile">
-      <div class="deco-art" style="background:${bg};flex-direction:column;gap:3px">
-        ${Array(5).fill(markSVG("#C3D7EE","#8BB8E8","#5F8DDA",.28)).join("")}
-      </div>
-      <div class="deco-meta"><b>Inner Placket — HDL Detail</b><span>HDL placket print · 1.00"w × 7.00"h</span>${chips("WHITE")}</div>
+      <div class="deco-art" style="background:${bg}">${placketHTML()}</div>
+      <div class="deco-meta"><b>Inner Placket</b><span>HDL placket · ${d.placket.code}</span><span>${d.placket.size}</span>${chipsHTML(d.placket.chips)}</div>
     </div>
   </div>`;
 }
+
+/* ============ State ============ */
+const sel = {};
+let cart = [];   // max one item
 
 /* ============ Render products ============ */
 function renderProducts(){
   const wrap = document.getElementById("productList");
   wrap.innerHTML = PRODUCTS.map(p => {
-    sel[p.id] = sel[p.id] || { color: COLORS[2], size: null, qty: 1, imgIdx: 0 };
+    sel[p.id] = sel[p.id] || { color: COLORS[2], size: null, imgIdx: 0 };
     const s = sel[p.id];
     return `
     <div class="card" id="card-${p.id}">
@@ -411,19 +450,14 @@ function renderProducts(){
               <div class="size ${s.size===z?'active':''}" onclick="pickSize('${p.id}','${z}')" id="sz-${p.id}-${z}">${z}</div>`).join("")}
           </div>
           <div class="row">
-            <div class="qty">
-              <button type="button" onclick="bumpQty('${p.id}',-1)">−</button>
-              <input id="qty-${p.id}" value="1" readonly>
-              <button type="button" onclick="bumpQty('${p.id}',1)">+</button>
-            </div>
-            <button class="add-btn" onclick="addToOrder('${p.id}')">Add to order</button>
+            <button class="add-btn" onclick="addToOrder('${p.id}')">Select this item</button>
           </div>
           <div class="added-flash" id="flash-${p.id}"></div>
         </div>
       </div>
       <details class="deco">
         <summary><span class="chev">▶</span> View decoration details</summary>
-        <div id="deco-${p.id}">${decoTiles(s.color)}</div>
+        <div id="deco-${p.id}">${decoTiles(p.id, s.color)}</div>
       </details>
     </div>`;
   }).join("");
@@ -451,17 +485,13 @@ function pickColor(pid, cid){
   document.getElementById("cname-"+pid).textContent = sel[pid].color.label;
   document.querySelectorAll(`#card-${pid} .swatch`).forEach((el,i)=>
     el.classList.toggle("active", COLORS[i].id===cid));
-  document.getElementById("deco-"+pid).innerHTML = decoTiles(sel[pid].color);
+  document.getElementById("deco-"+pid).innerHTML = decoTiles(pid, sel[pid].color);
   refreshGallery(pid);
 }
 function pickSize(pid, z){
   sel[pid].size = z;
   PRODUCTS.find(x=>x.id===pid).sizes.forEach(s =>
     document.getElementById(`sz-${pid}-${s}`).classList.toggle("active", s===z));
-}
-function bumpQty(pid, d){
-  sel[pid].qty = Math.min(9, Math.max(1, sel[pid].qty + d));
-  document.getElementById("qty-"+pid).value = sel[pid].qty;
 }
 
 /* ============ Lightbox ============ */
@@ -471,39 +501,32 @@ function openLightbox(pid){
   document.getElementById("lightbox").classList.add("open");
 }
 
-/* ============ Cart ============ */
-function cartCount(){ return cart.reduce((a,i)=>a+i.qty,0); }
+/* ============ Cart — single item ============ */
 function addToOrder(pid){
   const s = sel[pid];
   const flash = document.getElementById("flash-"+pid);
   if(!s.size){ flash.style.color="#C05252"; flash.textContent="Please pick a size first."; return; }
-  if(CONFIG.maxItemsPerPerson && cartCount() + s.qty > CONFIG.maxItemsPerPerson){
-    flash.style.color="#C05252";
-    flash.textContent=`Limit is ${CONFIG.maxItemsPerPerson} items per person.`; return;
-  }
-  const existing = cart.find(i => i.productId===pid && i.colorId===s.color.id && i.size===s.size);
-  if(existing) existing.qty = Math.min(9, existing.qty + s.qty);
-  else cart.push({ productId:pid, colorId:s.color.id, size:s.size, qty:s.qty });
+  const replacing = cart.length > 0;
+  cart = [{ productId:pid, colorId:s.color.id, size:s.size }];
   flash.style.color="#149C5C";
-  flash.textContent="Added to your order ✓";
-  setTimeout(()=>{ flash.textContent=""; }, 2200);
+  flash.textContent = replacing ? "Selection updated — one item per person ✓" : "Item selected ✓";
+  document.querySelectorAll(".added-flash").forEach(f=>{ if(f!==flash) f.textContent=""; });
+  setTimeout(()=>{ flash.textContent=""; }, 2600);
   renderCart();
 }
-function removeItem(idx){ cart.splice(idx,1); renderCart(); }
+function removeItem(){ cart = []; renderCart(); }
 function renderCart(){
-  document.getElementById("countBadge").textContent = cartCount();
+  document.getElementById("countBadge").textContent = cart.length;
   const el = document.getElementById("lineItems");
-  if(!cart.length){ el.innerHTML = '<div class="empty">No items yet — add apparel from the left.</div>'; return; }
-  el.innerHTML = cart.map((i,idx)=>{
-    const p = PRODUCTS.find(x=>x.id===i.productId);
-    const c = COLORS.find(x=>x.id===i.colorId);
-    return `<div class="line-item">
+  if(!cart.length){ el.innerHTML = '<div class="empty">No item yet — pick your apparel on the left.</div>'; return; }
+  const i = cart[0];
+  const p = PRODUCTS.find(x=>x.id===i.productId);
+  const c = COLORS.find(x=>x.id===i.colorId);
+  el.innerHTML = `<div class="line-item">
       <div class="li-dot" style="background:${c.base}"></div>
       <div class="li-main"><b>${p.name}</b><span>${c.label} · Size ${i.size}</span></div>
-      <div class="li-qty">×${i.qty}</div>
-      <button class="li-remove" onclick="removeItem(${idx})" title="Remove">✕</button>
+      <button class="li-remove" onclick="removeItem()" title="Remove">✕</button>
     </div>`;
-  }).join("");
 }
 
 /* ============ Close date ============ */
@@ -520,7 +543,7 @@ function renderClosePill(){
   }
 }
 
-/* ============ Submit ============ */
+/* ============ Review & submit ============ */
 function validate(){
   const err = document.getElementById("formErr");
   const name = document.getElementById("fName").value.trim();
@@ -529,23 +552,42 @@ function validate(){
   err.style.display = "none";
   const show = m => { err.textContent = m; err.style.display = "block"; return null; };
   if(!shopOpen()) return show("The ordering window has closed.");
-  if(!cart.length) return show("Add at least one item to your order.");
+  if(!cart.length) return show("Please select your apparel item first.");
   if(!name) return show("Please enter your full name.");
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return show("Please enter a valid work email.");
   if(!loc) return show("Please select your office location.");
   return { name, email, location: loc };
 }
-async function submitOrder(){
+function openReview(){
   const info = validate();
   if(!info) return;
+  const i = cart[0];
+  const p = PRODUCTS.find(x=>x.id===i.productId);
+  const c = COLORS.find(x=>x.id===i.colorId);
+  document.getElementById("reviewRecap").innerHTML = `
+    <div class="r-row"><span>Item</span><b>${p.name}</b></div>
+    <div class="r-row"><span>Style</span><b>${p.style}</b></div>
+    <div class="r-row"><span>Color</span><b>${c.label}</b></div>
+    <div class="r-row"><span>Size</span><b>${i.size}</b></div>
+    <hr>
+    <div class="r-row"><span>Name</span><b>${info.name}</b></div>
+    <div class="r-row"><span>Email</span><b>${info.email}</b></div>
+    <div class="r-row"><span>Deliver to</span><b>${info.location}</b></div>`;
+  document.getElementById("reviewOverlay").classList.add("open");
+}
+function closeReview(){ document.getElementById("reviewOverlay").classList.remove("open"); }
+async function confirmSubmit(){
+  const info = validate();
+  if(!info){ closeReview(); return; }
+  const i = cart[0];
   const payload = {
     ...info,
-    items: cart.map(i => ({
+    item: {
       style: PRODUCTS.find(p=>p.id===i.productId).style,
       product: PRODUCTS.find(p=>p.id===i.productId).name,
       color: COLORS.find(c=>c.id===i.colorId).label,
-      size: i.size, qty: i.qty
-    })),
+      size: i.size
+    },
     submittedAt: new Date().toISOString()
   };
   /* LIVE MODE: POST to Power Automate -> Excel on SharePoint
@@ -554,11 +596,13 @@ async function submitOrder(){
       headers:{ "Content-Type":"application/json" }, body: JSON.stringify(payload) });
   } */
   console.log("Order payload:", payload);
+  closeReview();
   document.getElementById("modalSub").textContent =
     `Thanks, ${info.name.split(" ")[0]}! A confirmation will be sent to ${info.email}.`;
   document.getElementById("recap").innerHTML =
-    payload.items.map(i=>`<div>• ${i.product} — ${i.color}, ${i.size} ×${i.qty}</div>`).join("") +
-    `<div style="margin-top:8px;color:#696969">Deliver to: ${info.location}</div>`;
+    `<div>• ${payload.item.product} — ${payload.item.color}, Size ${payload.item.size}</div>
+     <div style="margin-top:8px;color:#696969">Deliver to: ${info.location}</div>
+     <div style="margin-top:4px;color:#696969">Delivery may take up to 3 weeks after ordering closes.</div>`;
   document.getElementById("overlay").classList.add("open");
   cart = []; renderCart();
   document.getElementById("orderForm").reset();
@@ -570,7 +614,7 @@ CONFIG.locations.forEach(l => {
   const o = document.createElement("option"); o.value = l; o.textContent = l;
   document.getElementById("fLocation").appendChild(o);
 });
-document.getElementById("submitBtn").addEventListener("click", submitOrder);
+document.getElementById("submitBtn").addEventListener("click", openReview);
 renderProducts();
 renderCart();
 renderClosePill();
