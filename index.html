@@ -102,8 +102,9 @@
   details.deco[open] summary .chev{transform:rotate(90deg)}
   .deco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:4px 28px 22px}
   .deco-tile{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
-  .deco-art{height:104px;display:flex;align-items:center;justify-content:center;gap:9px}
+  .deco-art{height:104px;display:flex;align-items:center;justify-content:center;gap:9px;overflow:hidden}
   .deco-art svg{display:block;flex:none}
+  .deco-art img{width:100%;height:100%;object-fit:cover;display:block}
   .deco-meta{padding:10px 12px}
   .deco-meta b{display:block;font-size:12px;font-weight:700}
   .deco-meta span{font-size:11px;color:var(--muted);display:block}
@@ -287,22 +288,19 @@ const CONFIG = {
 const CDN = "https://sellsheet.order.levelwear.com/Images/CDN/";
 const IMAGES = {
   JI50L: {
+    /* Black was re-shot by Levelwear after the decoration update — all 4 frames are the new set */
     black: ["22/ab/a8/98/261ca4594be2d8ab064ea394a4a1f8133802242afa0a5b592e2ed947.jpg",
-            "4d/78/74/0b/1340376b43be0d6dfefde4dcd6467d52ac606c68b8239e8c2fd41436.jpg",
-            "e3/27/c3/cc/b7d84316804b4f5b5c10984408b5f906169ab8022aba60efe9be74ed.jpg",
-            "7a/5f/ca/ec/c9c4021514866a6f51103e2fdfecf1defd99050cc19cb42cff3dc7a2.jpg",
-            "de/d4/c4/03/5b082f4c129cbbc5ad1b401af8ba5da051b14821fa2a115fb2d42e96.jpg"],
-    ice:   ["be/8f/e4/50/afdeebdd57150f10f6466dc8441e70d2be37798079ed6ed8ae82d79e.jpg",
-            "a9/b6/c6/2c/ef17eba03b5ebfd6fe9064d12d2da3ce303b631e59035d06fe530a92.jpg",
+            "be/8f/e4/50/afdeebdd57150f10f6466dc8441e70d2be37798079ed6ed8ae82d79e.jpg",
+            "2c/ec/2f/fb/dfab10363480beecafa38c94633ad97c6336a3b5ffa82c50e0cfabeb.jpg",
+            "a0/d4/80/fd/b105729f77ee6b4882dfe1ca5b9b87100c7d4a6dd50c6bc3dd03e4e6.jpg"],
+    ice:   ["a9/b6/c6/2c/ef17eba03b5ebfd6fe9064d12d2da3ce303b631e59035d06fe530a92.jpg",
             "db/7d/54/4e/09c7e3a7a2b6cea48b66a85d03219d23e73f9172966c570d3fed221a.jpg",
             "ca/78/d3/27/df71a188f9ed411dce300ac757c67677c54ebd1aacc9ab81bddc2d1e.jpg"],
-    navy:  ["2c/ec/2f/fb/dfab10363480beecafa38c94633ad97c6336a3b5ffa82c50e0cfabeb.jpg",
-            "9a/91/4c/57/3e8414a4bb1c6e064064024b6df69b49db30bdf368f3bf9ee6a81416.jpg",
+    navy:  ["9a/91/4c/57/3e8414a4bb1c6e064064024b6df69b49db30bdf368f3bf9ee6a81416.jpg",
             "b5/31/6e/43/78dcbfb6b3eb63697ed16e9ed37c8ac1a7395ad1bd794c6b187ca84a.jpg",
             "68/b3/97/b9/5bba7a507064c1f1a68075e6eb5c9e4d448dfb15861cf96fdf5d7e1b.jpg",
             "6b/21/30/d3/c784cba0308f3a6c85b61ef42ecbc8262535555989a64b7f583a5a37.jpg"],
-    white: ["a0/d4/80/fd/b105729f77ee6b4882dfe1ca5b9b87100c7d4a6dd50c6bc3dd03e4e6.jpg",
-            "4f/ec/42/54/24956661c6811dfa33b34ddfa2c226d76d7e38110c0f574d9cce58fe.jpg",
+    white: ["4f/ec/42/54/24956661c6811dfa33b34ddfa2c226d76d7e38110c0f574d9cce58fe.jpg",
             "85/aa/f8/69/af57d15538442c1eeb938314f03092ded9a78bb075f39f9c6abd9bd4.jpg",
             "a9/1f/dc/f7/a66c2d5849b850d4339a8286c052273cf7f0922ab00aa88e001eb4b9.jpg",
             "4d/33/d1/88/a15439b6208644a271707e73eba0e2d311db2eaffe4a9de7013e74f1.jpg"]
@@ -373,41 +371,32 @@ const DECO = {
   }
 };
 
-/* Boardwalk emblem — overlapping rings, right-aligned (matches the official mark) */
-function emblemSVG(px){
-  return `<svg width="${px}" height="${px}" viewBox="0 0 100 100" fill="none">
-    <circle cx="46" cy="50" r="40" stroke="${PMS.p2129}" stroke-width="10"/>
-    <circle cx="57" cy="50" r="30" stroke="${PMS.p278}" stroke-width="9"/>
-    <circle cx="67" cy="50" r="21" stroke="${PMS.p2707}" stroke-width="8"/>
-    <circle cx="76" cy="50" r="13" stroke="${PMS.white}" stroke-width="7"/>
-  </svg>`;
-}
-function artHTML(spec, bg){
-  if(spec.kind === "emblem") return emblemSVG(58);
-  const txt = spec.dark ? "#111" : "#fff";
-  return emblemSVG(30) + `<span style="color:${txt};font-weight:800;letter-spacing:.2em;font-size:14px">BOARDWALK</span>`;
-}
-function placketHTML(){
-  return `<div style="display:flex;flex-direction:column;gap:3px;align-items:center">${Array(6).fill(emblemSVG(13)).join("")}</div>`;
-}
+/* Real decoration tile imagery — captured 1:1 from the Levelwear sell sheet */
+const DECO_IMG = {
+  black: { emblem:"screenshot-1784572967149-b7323f90.png", wordmark:"screenshot-1784572897164-8c6d2b6b.png", placket:"screenshot-1784573044083-bb315753.png" },
+  ice:   { emblem:"screenshot-1784573001040-f0f74507.png", wordmark:"screenshot-1784573006744-6358fa0a.png", placket:"screenshot-1784573049050-2f3f4977.png" },
+  navy:  { emblem:"screenshot-1784573012616-7f9d458d.png", wordmark:"screenshot-1784573017212-e4b5f222.png", placket:"screenshot-1784573053641-9dfad665.png" },
+  white: { emblem:"screenshot-1784573022270-c54d7ba4.png", wordmark:"screenshot-1784573027286-b00643c4.png", placket:"screenshot-1784573058386-adc23269.png" }
+};
 function chipsHTML(chips){
   return `<div class="pms">${chips.map(([n,c])=>`<span class="chip" style="background:${c}"></span><small>${n}</small>`).join("")}</div>`;
 }
 function decoTiles(pid, color){
   const d = DECO[pid][color.id];
-  const bg = color.base;
+  const im = DECO_IMG[color.id];
+  const yokeImg = d.yoke.kind === "wordmark" ? im.wordmark : im.emblem;
   return `
   <div class="deco-grid">
     <div class="deco-tile">
-      <div class="deco-art" style="background:${bg}">${artHTML(d.yoke)}</div>
+      <div class="deco-art"><img src="${yokeImg}" alt="Back yoke decoration" loading="lazy"></div>
       <div class="deco-meta"><b>Back Yoke</b><span>Pur-weld transfer · ${d.yoke.code}</span><span>${d.yoke.size}</span>${chipsHTML(d.yoke.chips)}</div>
     </div>
     <div class="deco-tile">
-      <div class="deco-art" style="background:${bg}">${artHTML(d.sleeve)}</div>
+      <div class="deco-art"><img src="${im.wordmark}" alt="Left sleeve decoration" loading="lazy"></div>
       <div class="deco-meta"><b>Left Sleeve</b><span>Pur-weld transfer · ${d.sleeve.code}</span><span>${d.sleeve.size}</span>${chipsHTML(d.sleeve.chips)}</div>
     </div>
     <div class="deco-tile">
-      <div class="deco-art" style="background:${bg}">${placketHTML()}</div>
+      <div class="deco-art"><img src="${im.placket}" alt="Inner placket decoration" loading="lazy"></div>
       <div class="deco-meta"><b>Inner Placket</b><span>HDL placket · ${d.placket.code}</span><span>${d.placket.size}</span>${chipsHTML(d.placket.chips)}</div>
     </div>
   </div>`;
